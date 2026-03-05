@@ -1,0 +1,15 @@
+{
+    "name": "Lineman",
+    "type": "dynamic",
+    "description": "UW Huskies offensive lineman blocker",
+    "shape": "omni",
+    "radius": 15,
+    "friction": {
+        "collision": 3,
+        "linear": 60,
+        "rotational": 200
+    },
+    "sensors": [],
+    "mass": 5,
+    "controller": "lib/lineman.so"
+}

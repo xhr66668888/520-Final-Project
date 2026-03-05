@@ -1,0 +1,15 @@
+{
+    "name": "RunningBack",
+    "type": "dynamic",
+    "description": "Player-controlled UW Huskies running back",
+    "shape": "omni",
+    "radius": 11,
+    "friction": {
+        "collision": 1,
+        "linear": 50,
+        "rotational": 200
+    },
+    "sensors": [],
+    "mass": 1,
+    "controller": "lib/running_back.so"
+}

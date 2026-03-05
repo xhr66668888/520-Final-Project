@@ -1,0 +1,15 @@
+{
+    "name": "Linebacker",
+    "type": "dynamic",
+    "description": "OSU Buckeyes linebacker defender",
+    "shape": "omni",
+    "radius": 13,
+    "friction": {
+        "collision": 2,
+        "linear": 40,
+        "rotational": 200
+    },
+    "sensors": [],
+    "mass": 2,
+    "controller": "lib/linebacker.so"
+}

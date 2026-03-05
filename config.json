@@ -1,0 +1,140 @@
+{
+    "name": "UW vs OSU – The Running Back Challenge",
+    "ip": "0.0.0.0",
+    "port": 8765,
+
+    "buttons": [
+        {
+            "name": "reset",
+            "label": "Reset Game",
+            "style": { "background": "#4B2E83", "border-color": "#B7A57A", "color": "white" }
+        }
+    ],
+
+    "agents": [
+
+        {
+            "definition": "defs/running_back.json",
+            "style": { "fill": "#4B2E83", "stroke": "#B7A57A", "stroke-width": "3" },
+            "position": { "x": -400, "y": 0, "theta": 0 }
+        },
+
+        {
+            "definition": "defs/linebacker.json",
+            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "position": { "x": -120, "y": -90, "theta": 0 }
+        },
+        {
+            "definition": "defs/linebacker.json",
+            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "position": { "x": -120, "y": 90, "theta": 0 }
+        },
+        {
+            "definition": "defs/linebacker.json",
+            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "position": { "x": 80, "y": -50, "theta": 0 }
+        },
+        {
+            "definition": "defs/linebacker.json",
+            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "position": { "x": 80, "y": 50, "theta": 0 }
+        },
+        {
+            "definition": "defs/linebacker.json",
+            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "position": { "x": 240, "y": 0, "theta": 0 }
+        },
+
+        {
+            "definition": "defs/lineman.json",
+            "style": { "fill": "#33006F", "stroke": "#E8D3A2", "stroke-width": "2" },
+            "position": { "x": -260, "y": -40, "theta": 0 }
+        },
+        {
+            "definition": "defs/lineman.json",
+            "style": { "fill": "#33006F", "stroke": "#E8D3A2", "stroke-width": "2" },
+            "position": { "x": -260, "y": 40, "theta": 0 }
+        }
+    ],
+
+    "statics": [
+
+        {
+            "style": { "fill": "#2E7D32", "stroke": "none" },
+            "shape": [
+                { "x": -440, "y": -200 },
+                { "x": -440, "y":  200 },
+                { "x": -430, "y":  200 },
+                { "x": -430, "y": -200 }
+            ]
+        },
+
+        {
+            "style": { "fill": "#2E7D32", "stroke": "none" },
+            "shape": [
+                { "x": 430, "y": -200 },
+                { "x": 430, "y":  200 },
+                { "x": 440, "y":  200 },
+                { "x": 440, "y": -200 }
+            ]
+        },
+
+        {
+            "style": { "fill": "#2E7D32", "stroke": "none" },
+            "shape": [
+                { "x": -440, "y": -200 },
+                { "x":  440, "y": -200 },
+                { "x":  440, "y": -190 },
+                { "x": -440, "y": -190 }
+            ]
+        },
+
+        {
+            "style": { "fill": "#2E7D32", "stroke": "none" },
+            "shape": [
+                { "x": -440, "y": 190 },
+                { "x":  440, "y": 190 },
+                { "x":  440, "y": 200 },
+                { "x": -440, "y": 200 }
+            ]
+        },
+
+        {
+            "style": { "fill": "#BB0000", "stroke": "none" },
+            "shape": [
+                { "x": 348, "y": -190 },
+                { "x": 348, "y": -160 },
+                { "x": 352, "y": -160 },
+                { "x": 352, "y": -190 }
+            ]
+        },
+        {
+            "style": { "fill": "#BB0000", "stroke": "none" },
+            "shape": [
+                { "x": 348, "y": 160 },
+                { "x": 348, "y": 190 },
+                { "x": 352, "y": 190 },
+                { "x": 352, "y": 160 }
+            ]
+        },
+
+        {
+            "style": { "fill": "#4B2E83", "stroke": "none" },
+            "shape": [
+                { "x": -418, "y": -190 },
+                { "x": -418, "y": -160 },
+                { "x": -414, "y": -160 },
+                { "x": -414, "y": -190 }
+            ]
+        },
+        {
+            "style": { "fill": "#4B2E83", "stroke": "none" },
+            "shape": [
+                { "x": -418, "y": 160 },
+                { "x": -418, "y": 190 },
+                { "x": -414, "y": 190 },
+                { "x": -414, "y": 160 }
+            ]
+        }
+    ]
+}
