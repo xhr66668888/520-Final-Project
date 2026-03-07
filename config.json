@@ -7,7 +7,7 @@
         {
             "name": "reset",
             "label": "Reset Game",
-            "style": { "background": "#4B2E83", "border-color": "#B7A57A", "color": "white" }
+            "style": { "background": "#39275B", "border-color": "#39275B", "color": "white" }
         }
     ],
 
@@ -15,44 +15,44 @@
 
         {
             "definition": "defs/running_back.json",
-            "style": { "fill": "#4B2E83", "stroke": "#B7A57A", "stroke-width": "3" },
+            "style": { "fill": "#39275B", "stroke": "#39275B", "stroke-width": "3" },
             "position": { "x": -400, "y": 0, "theta": 0 }
         },
 
         {
             "definition": "defs/linebacker.json",
-            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "style": { "fill": "#ba0c2f", "stroke": "#666666", "stroke-width": "2" },
             "position": { "x": -120, "y": -90, "theta": 0 }
         },
         {
             "definition": "defs/linebacker.json",
-            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "style": { "fill": "#ba0c2f", "stroke": "#666666", "stroke-width": "2" },
             "position": { "x": -120, "y": 90, "theta": 0 }
         },
         {
             "definition": "defs/linebacker.json",
-            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "style": { "fill": "#ba0c2f", "stroke": "#666666", "stroke-width": "2" },
             "position": { "x": 80, "y": -50, "theta": 0 }
         },
         {
             "definition": "defs/linebacker.json",
-            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "style": { "fill": "#ba0c2f", "stroke": "#666666", "stroke-width": "2" },
             "position": { "x": 80, "y": 50, "theta": 0 }
         },
         {
             "definition": "defs/linebacker.json",
-            "style": { "fill": "#BB0000", "stroke": "#666666", "stroke-width": "2" },
+            "style": { "fill": "#ba0c2f", "stroke": "#666666", "stroke-width": "2" },
             "position": { "x": 240, "y": 0, "theta": 0 }
         },
 
         {
             "definition": "defs/lineman.json",
-            "style": { "fill": "#33006F", "stroke": "#E8D3A2", "stroke-width": "2" },
+            "style": { "fill": "#39275B", "stroke": "#39275B", "stroke-width": "2" },
             "position": { "x": -260, "y": -40, "theta": 0 }
         },
         {
             "definition": "defs/lineman.json",
-            "style": { "fill": "#33006F", "stroke": "#E8D3A2", "stroke-width": "2" },
+            "style": { "fill": "#39275B", "stroke": "#39275B", "stroke-width": "2" },
             "position": { "x": -260, "y": 40, "theta": 0 }
         }
     ],
@@ -100,7 +100,7 @@
         },
 
         {
-            "style": { "fill": "#BB0000", "stroke": "none" },
+            "style": { "fill": "#ba0c2f", "stroke": "none" },
             "shape": [
                 { "x": 348, "y": -190 },
                 { "x": 348, "y": -160 },
@@ -109,7 +109,7 @@
             ]
         },
         {
-            "style": { "fill": "#BB0000", "stroke": "none" },
+            "style": { "fill": "#ba0c2f", "stroke": "none" },
             "shape": [
                 { "x": 348, "y": 160 },
                 { "x": 348, "y": 190 },
@@ -119,7 +119,7 @@
         },
 
         {
-            "style": { "fill": "#4B2E83", "stroke": "none" },
+            "style": { "fill": "#39275B", "stroke": "none" },
             "shape": [
                 { "x": -418, "y": -190 },
                 { "x": -418, "y": -160 },
@@ -128,7 +128,7 @@
             ]
         },
         {
-            "style": { "fill": "#4B2E83", "stroke": "none" },
+            "style": { "fill": "#39275B", "stroke": "none" },
             "shape": [
                 { "x": -418, "y": 160 },
                 { "x": -418, "y": 190 },

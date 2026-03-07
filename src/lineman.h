@@ -10,31 +10,19 @@
 using namespace enviro;
 
 /**
- * @brief Controller for a UW Lineman (offensive blocker) agent.
+ * @brief Controller for one UW lineman.
  *
- * UW Linemen are heavy, AI-controlled allies that protect the running
- * back.  They track every OSU Linebacker's position (via "lb_position"
- * events) and the running back's position (via "rb_position" events).
- *
- * Two behavioural modes:
- *   GUARD – no immediate threat; stay in loose formation around the ball carrier.
- *   BLOCK – a linebacker is close to the running back; move to intercept
- *           and physically push the defender away using superior mass.
+ * Tracks runner/defender positions and switches between guard and block logic.
  */
 class LinemanController : public Process, public AgentInterface {
 
 public:
-    /**
-     * @brief Construct a new LinemanController.
-     */
+    /** Constructor. */
     LinemanController() : Process(), AgentInterface(),
         rb_x(0), rb_y(0),
         start_x(0), start_y(0) {}
 
-    /**
-     * @brief Initialize: record home position, set up event watchers,
-     *        apply visual decoration.
-     */
+    /** Initialize event handlers and save start position. */
     void init() {
         prevent_rotation();
         start_x = x();
@@ -60,19 +48,14 @@ public:
             lb_positions.clear();
         });
 
-        // Gold ring decoration
-        decorate("<circle cx='0' cy='0' r='5' style='fill:#B7A57A'></circle>");
+        // Center marker.
+        decorate("<circle cx='0' cy='0' r='5' style='fill:#39275B'></circle>");
     }
 
     /** @brief Start callback (unused). */
     void start() {}
 
-    /**
-     * @brief Main update loop.
-     * Finds the linebacker closest to the running back. If one is
-     * within threat range, intercept it (BLOCK). Otherwise escort
-     * the running back in formation (GUARD).
-     */
+    /** Main update loop for guard/block selection and movement. */
     void update() {
         // ---- Find most threatening linebacker ----
         double  min_dist    = 1e9;
@@ -118,7 +101,7 @@ private:
     double rb_x, rb_y;            ///< Last-known running-back position
     double start_x, start_y;      ///< Starting position (for reset)
 
-    /// Map of linebacker id → (x, y) position
+    /// Map of linebacker id -> (x, y) position
     std::map<int, std::pair<double, double>> lb_positions;
 
     static constexpr double THREAT_RANGE = 250.0;  ///< Range to switch to BLOCK
@@ -127,8 +110,7 @@ private:
 };
 
 /**
- * @brief UW Lineman (Blocker) agent.
- * Heavyweight AI ally that shields the running back from defenders.
+ * @brief UW lineman blocker agent.
  */
 class Lineman : public Agent {
 public:

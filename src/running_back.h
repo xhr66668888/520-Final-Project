@@ -97,22 +97,14 @@ public:
         // ---- Touchdown detection ----
         if (x() > ENDZONE_X) {
             score++;
-            label("TOUCHDOWN! Score: " + std::to_string(score), -50, 5);
-            emit(Event("game_reset"));
-            teleport(START_X, START_Y, 0);
-            UP = DOWN = LEFT = RIGHT = false;
-            msg_timer = MSG_DURATION;
+            finish_play("TOUCHDOWN! Score: " + std::to_string(score));
             return;
         }
 
         // ---- Tackle detection ----
         if (tackled_flag) {
             tackled_flag = false;
-            label("TACKLED!", -20, 5);
-            emit(Event("game_reset"));
-            teleport(START_X, START_Y, 0);
-            UP = DOWN = LEFT = RIGHT = false;
-            msg_timer = MSG_DURATION;
+            finish_play("TACKLED!");
             return;
         }
 
@@ -124,6 +116,15 @@ public:
     void stop() {}
 
 private:
+    // Shared path for touchdown and tackle handling.
+    void finish_play(const std::string& message) {
+        label(message, -50, 5);
+        emit(Event("game_reset"));
+        teleport(START_X, START_Y, 0);
+        UP = DOWN = LEFT = RIGHT = false;
+        msg_timer = MSG_DURATION;
+    }
+
     /**
      * @brief Fully reset the game: score, flags, and position.
      */

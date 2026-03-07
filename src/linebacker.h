@@ -8,34 +8,20 @@
 
 using namespace enviro;
 
-/**
- * @brief Behavioural states for the Linebacker AI.
- *
- * PATROL  – wander up/down inside a defensive zone.
- * CHASE   – pursue the running back at full speed.
- * RECOVER – brief stun after getting stuck (deadlock prevention).
- */
+/** Linebacker state modes. */
 enum class LBState { PATROL, CHASE, RECOVER };
 
 /**
- * @brief Controller for an OSU Linebacker (defender) agent.
+ * @brief Controller for one OSU linebacker.
  *
- * Implements a three-state machine:
- *   PATROL  → CHASE   : running back enters detection range
- *   CHASE   → PATROL  : running back escapes beyond lost range
- *   CHASE   → RECOVER : agent velocity near zero (possible deadlock)
- *   RECOVER → PATROL  : recovery timer expires
- *
- * The controller watches the "rb_position" event broadcast by the
- * RunningBack to track the player. On "game_reset" it teleports
- * back to its starting (home) position.
+ * Reads running-back position events and switches between patrol,
+ * chase, and recover behavior. Also returns to home position on
+ * "game_reset".
  */
 class LinebackerController : public Process, public AgentInterface {
 
 public:
-    /**
-     * @brief Construct a new LinebackerController.
-     */
+    /** Constructor. */
     LinebackerController() : Process(), AgentInterface(),
         state(LBState::PATROL),
         rb_x(0), rb_y(0),
@@ -44,10 +30,7 @@ public:
         home_x(0), home_y(0),
         stuck_counter(0), last_x(0), last_y(0) {}
 
-    /**
-     * @brief Initialize: store home position, set up event watchers,
-     *        apply visual decoration.
-     */
+    /** Initialize event handlers and home position. */
     void init() {
         prevent_rotation();
         home_x = x();
@@ -55,7 +38,7 @@ public:
         last_x = x();
         last_y = y();
 
-        // Randomise initial patrol direction so defenders don't move in sync
+        // Randomize initial patrol direction so defenders do not stay synchronized.
         if (std::rand() % 2 == 0) patrol_dir = -1.0;
 
         // Track the running back's broadcast position
@@ -72,19 +55,14 @@ public:
             teleport(home_x, home_y, 0);
         });
 
-        // Small white dot decoration
+        // Center marker for easier visual tracking.
         decorate("<circle cx='0' cy='0' r='3' style='fill:white'></circle>");
     }
 
     /** @brief Start callback (unused). */
     void start() {}
 
-    /**
-     * @brief Main update loop – runs the state-machine logic each tick.
-     *
-     * Also broadcasts this linebacker's position so UW Linemen can
-     * decide whom to block.
-     */
+    /** Main update loop for state transitions and movement. */
     void update() {
         // Vector from this agent to the running back
         double dx   = rb_x - x();
@@ -148,10 +126,7 @@ public:
     void stop() {}
 
 private:
-    /**
-     * @brief PATROL behaviour – oscillate vertically within a zone.
-     * Switches direction periodically.
-     */
+    /** Patrol behavior: vertical lane movement with periodic direction swap. */
     void do_patrol() {
         patrol_timer++;
         if (patrol_timer > PATROL_SWITCH) {
@@ -161,12 +136,7 @@ private:
         omni_track_velocity(0, patrol_dir * PATROL_SPEED, 10);
     }
 
-    /**
-     * @brief CHASE behaviour – pursue the running back.
-     * @param dx  Horizontal distance to running back
-     * @param dy  Vertical distance to running back
-     * @param dist Euclidean distance to running back
-     */
+    /** Chase behavior: move toward current running-back position. */
     void do_chase(double dx, double dy, double dist) {
         if (dist > 1.0) {
             double target_vx = (dx / dist) * CHASE_SPEED;
@@ -175,10 +145,7 @@ private:
         }
     }
 
-    /**
-     * @brief RECOVER behaviour – apply a small random impulse to
-     *        break out of a deadlock, then damp movement.
-     */
+    /** Recover behavior: apply random impulse to break collision deadlock. */
     void do_recover() {
         double rfx = static_cast<double>((std::rand() % 200) - 100);
         double rfy = static_cast<double>((std::rand() % 200) - 100);
@@ -186,7 +153,7 @@ private:
         omni_damp_movement();
     }
 
-    // ---- State ----
+    // State
     LBState state;                    ///< Current behavioural state
     double  rb_x, rb_y;              ///< Last-known running-back position
     double  patrol_dir;              ///< Current patrol direction (+1 / −1)
@@ -196,7 +163,7 @@ private:
     int     stuck_counter;           ///< Consecutive "barely moved" ticks
     double  last_x, last_y;         ///< Position at previous tick
 
-    // ---- Tuning constants ----
+    // Tuning constants
     static constexpr double DETECTION_RANGE = 200.0;  ///< Begin chasing
     static constexpr double LOST_RANGE      = 350.0;  ///< Give up chasing
     static constexpr double PATROL_SPEED    = 15.0;   ///< Patrol velocity
@@ -208,8 +175,7 @@ private:
 };
 
 /**
- * @brief OSU Linebacker agent.
- * AI-controlled defender that patrols a zone and chases the running back.
+ * @brief OSU linebacker agent.
  */
 class Linebacker : public Agent {
 public:
