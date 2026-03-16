@@ -1,6 +1,6 @@
 # UW vs OSU Running Back Challenge
 
-This is my EE/CSE 520 final project built with Enviro + Elma.
+This is my EE 520 final project built with Enviro + Elma.
 
 The simulation is a small football game:
 - You control one UW running back.
@@ -173,7 +173,7 @@ Verify these visible points:
 - Enviro: https://github.com/klavinslab/enviro
 - Elma: https://github.com/klavinslab/elma
 - Chipmunk2D physics engine used by Enviro.
-- EE/CSE 520 course materials and lecture examples.
+- EE 520 course materials and lecture examples.
 
 ## License
 
